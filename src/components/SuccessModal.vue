@@ -18,11 +18,13 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "SuccessModal",
 };
 </script>
+
 <style>
 .success-modal {
   position: fixed; /* Stay in place */
