@@ -1,28 +1,75 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <NavBar />
+    <div
+      :style="{ backgroundImage: 'url(' + imgSrc + ')' }"
+      class="bg-header"
+    ></div>
+    <Title :project="project" />
+    <Progress />
+    <About />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import NavBar from "@/components/NavBar";
+import Title from "@/components/Title";
+import Progress from "@/components/Progress";
+import About from "@/components/About";
+import data from "@/assets/data.json";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    NavBar,
+    Title,
+    Progress,
+    About,
+  },
+  data() {
+    return {
+      project: data[0],
+    };
+  },
+  mounted() {
+    this.imgSrc = require("@/assets/" + this.project.image);
+    this.$root.$on("bookmark", this.bookmark);
+  },
+  methods: {
+    bookmark: function () {
+      this.project.bookmarked = !this.project.bookmarked;
+      console.log(this.project.bookmarked);
+    },
+  },
+  computed: {
+    imgSrc: {
+      get: function () {
+        // console.log(this.project);
+        return require("@/assets/" + this.project.image);
+      },
+      set: function () {
+        return require("@/assets/" + this.project.image);
+      },
+    },
+  },
+};
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Commissioner&display=swap");
+@import "~bootstrap/dist/css/bootstrap.css";
+
+html,
+body,
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+}
+#app {
+  font-family: "Commissioner", sans-serif;
+  font-size: 16px;
+}
+.bg-header {
+  background-image: url("~@/assets/image-hero-desktop.jpg");
+  background-size: cover;
+  height: 370px;
 }
 </style>
