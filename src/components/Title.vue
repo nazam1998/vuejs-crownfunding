@@ -14,7 +14,7 @@
       </div>
       <div class="section-button mt-5 row justify-content-between">
         <div class="col-4 text-center">
-          <button class="btn-back">Back this project</button>
+          <button class="btn-back" @click="$root.$emit('change-modal')">Back this project</button>
         </div>
         <div class="col-4 text-center">
           <button

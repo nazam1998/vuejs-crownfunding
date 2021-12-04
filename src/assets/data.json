@@ -4,7 +4,8 @@
     "image": "image-hero-desktop.jpg",
     "backers": 5007,
     "current": 89914,
-    "deadline": 56,
+    "max": 100000,
+    "deadline": "22/09/2022",
 
     "pledges": [{
             "title": "Bamboo Stand",

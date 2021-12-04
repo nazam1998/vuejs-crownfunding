@@ -17,7 +17,7 @@
           sticks to be stored under the stand.
         </p>
       </div>
-      <Pledge/>
+      <Pledge v-for="(pledge, index) in project.pledges" :pledge="pledge" :key="index"/>
     </div>
   </div>
 </template>
@@ -27,6 +27,9 @@ export default {
   name: "About",
   components: {
     Pledge
+  },
+  props: {
+    project: Object
   }
 };
 </script>
