@@ -89,8 +89,6 @@ export default {
       let min = this.hasPledge ? this.pledge.min : 1;
       if (value < min) {
         this.userChoice = diff;
-      } else if (value > diff) {
-        this.userChoice = 1;
       }
     },
   },
@@ -148,10 +146,6 @@ export default {
   color: white;
   border: none;
 }
-.card-disable {
-  opacity: 0.2;
-  cursor: not-allowed;
-}
 
 .border-green {
   border-color: #3cb4ab;
@@ -163,5 +157,19 @@ export default {
 }
 input[type="number"] {
   border: none;
+}
+.card {
+  cursor: pointer;
+}
+.card:hover h5.card-title {
+  color: #3cb4ab;
+}
+.card-disable {
+  opacity: 0.2;
+  cursor: not-allowed;
+  color: black;
+}
+.card-disable:hover h5.card-title {
+  color: black;
 }
 </style>

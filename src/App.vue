@@ -49,7 +49,6 @@ export default {
   methods: {
     bookmark: function () {
       this.project.bookmarked = !this.project.bookmarked;
-      console.log(this.project.bookmarked);
     },
     displayModal: function () {
       this.showModal = !this.showModal;
@@ -68,12 +67,10 @@ export default {
       }
     },
     addFunds(value) {
-      console.log(value);
       let choosedPledge = value[0];
-      // let pledge = this.project.pledge
       let add = value[1];
       let index = value[2];
-      this.$set(this.project, "current", this.project.current + add);
+      this.$set(this.project, "current", parseInt(this.project.current)  + parseInt(add));
       this.$set(this.project, "backers", this.project.backers + 1);
       if (choosedPledge != "None") {
         this.$set(
@@ -82,8 +79,6 @@ export default {
           this.project.pledges[index].left - 1
         );
       }
-
-      console.log(choosedPledge);
       this.displayModal();
       this.successModal();
     },

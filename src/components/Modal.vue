@@ -33,7 +33,6 @@ export default {
   methods: {
     selectPledge: function(value){
       this.current = value;
-      console.log(this.current);
     }
   }
 };

@@ -14,7 +14,9 @@
       </div>
       <div class="section-button mt-5 row justify-content-between">
         <div class="col-4 text-center">
-          <button class="btn-back" @click="$root.$emit('change-modal')">Back this project</button>
+          <button class="btn-back" @click="$root.$emit('change-modal')">
+            Back this project
+          </button>
         </div>
         <div class="col-4 text-center">
           <button
@@ -24,7 +26,9 @@
               'btn-book': !project.bookmarked,
             }"
           >
-            <img :src="bookmarkedImg" class="me-2" alt="" />Bookmark
+            <img :src="bookmarkedImg" class="me-2" alt="" />{{
+              project.bookmarked ? "Bookmarked" : "Bookmark"
+            }}
           </button>
         </div>
       </div>
@@ -42,16 +46,15 @@ export default {
       this.$root.$emit("bookmark", this.project.bookmarked);
     },
   },
-    computed:{
-      bookmarkedImg: function () {
-        if (this.project.bookmarked){
-          return require('@/assets/icon-bookmarked.svg');
-        }else{
-          return require('@/assets/icon-bookmark.svg');
-
-        }
+  computed: {
+    bookmarkedImg: function () {
+      if (this.project.bookmarked) {
+        return require("@/assets/icon-bookmarked.svg");
+      } else {
+        return require("@/assets/icon-bookmark.svg");
       }
     },
+  },
 };
 </script>
 <style>
